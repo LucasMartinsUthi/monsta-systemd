@@ -1,0 +1,41 @@
+def ping_cloud():
+    key = config.get("monsta.cloud.key")
+    headers = {
+        "X-Monsta-Key": key,
+        "X-Monsta-Version": "5.0.0-dev.1"
+    }
+    print("Pinging cloud", key)
+
+    fail = False
+    status_data = registry.get("monsta.cloud.status")
+
+    try:
+        resp = http.get("https://mind.monsta.com.br/account", headers=headers, verify=False)
+        if resp.status_code == 200:
+            status_data = json.loads(resp.body.decode())
+            print("Status data")
+            print(status_data)
+            status_data["success"] = True
+            status_data["last_ping"] = time.now()
+        else:
+            fail = True
+    except Exception as e:
+        print("ERROR", e)
+        fail = True
+
+    if fail:
+        if status_data == None:
+            status_data = {}
+        status_data["success"] = False
+
+    registry.put("monsta.cloud.status", status_data)
+    rpc.publish("monsta.cloud.status_update", [status_data])
+    return status_data
+
+
+def get_cloud_status():
+    status = registry.get("monsta.cloud.status")
+    if status:
+        return status
+    else:
+        return ping_cloud()

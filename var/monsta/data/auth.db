@@ -1,0 +1,547 @@
+{
+  "users": {
+    "admin": {
+      "username": "admin",
+      "password": "$2y$04$n0Ny4GG3m28Vo.lpK8Lu3O2CK2yLVVGCcT8X2jSzUDGAw1Af4Glhq",
+      "salt": "",
+      "method": "bcrypt",
+      "props": {
+        "full_name": {
+          "String": "Administrador"
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:all::",
+          "action": [
+            "Create",
+            "Delete",
+            "Execute",
+            "Read",
+            "Write"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": "admin"
+        }
+      ]
+    },
+    "57466358": {
+      "username": "57466358",
+      "password": "ztI3XxRjjdQPNgsU0y47tVrWsmvsq4taRHs/KOM4xxQ=",
+      "salt": "6bIGKyqBy9uHtUXA//ZIPg==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9288",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::10664",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::10665",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "41244496": {
+      "username": "41244496",
+      "password": "Bjp/Zc8SXtOngKjlpslHSEe+Xvi7uRM3n3LbJiHAufM=",
+      "salt": "HOp+wy07OxNMFjK5azb9dg==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9349",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::1963",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::9331",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:container::9272",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "35696788": {
+      "username": "35696788",
+      "password": "k187xQziI7tpe/lBGThJ1uKF5yznUoyvenM3x9bVboQ=",
+      "salt": "9dVU7s2zYt3BYPpvpJmmhA==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9288",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::10664",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::10665",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "28191539": {
+      "username": "28191539",
+      "password": "aG67lqpr487NhuHhPuRiH6itqZQyQA8Kgs3jZu5xBhw=",
+      "salt": "dq8lpL/qWv+bqNfjLvJIMQ==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::4211",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::4221",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "43736868": {
+      "username": "43736868",
+      "password": "5nB53+jwOP1m3RLMS336pwkJfIZlpjKiBA1AR0xJfVY=",
+      "salt": "JtUHfDZkaWOZYKkZtMpz7A==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9288",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::10671",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "31619676": {
+      "username": "31619676",
+      "password": "5ISyrw/0nNzoixHT5G16NNaL0q5cobZcLtqWtlkkbL4=",
+      "salt": "DijjwSr1iwPqcKBd3uv61g==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::4657",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::4667",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "40209660": {
+      "username": "40209660",
+      "password": "U2biwW+zFd5SQAQaS1xejcnxLOKm2l1aJppZpup91MY=",
+      "salt": "QI+HlWuK2UQCwUM5FcSp4w==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9349",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "13009313": {
+      "username": "13009313",
+      "password": "e+6ycVB63NVx/0/Db/sOJRm6c9fCMCy3HH87FMhpD5s=",
+      "salt": "dBLspJQPor4oUSXeD5iMxw==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9282",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::9283",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::10669",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "10428947": {
+      "username": "10428947",
+      "password": "jnYiXzc1TZpticWPk9mj4CsPgAsGwbgyJOdOXy99X4k=",
+      "salt": "Q/V9vp8gOh0cuqvEchav7w==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9308",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "77688260": {
+      "username": "77688260",
+      "password": "AK08N9J1GYkKue4V6rX8exMVRCQRq/0dECxafQiba9Q=",
+      "salt": "8TQyLnIaAfG039yECE4//w==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9470",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::9046",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::9469",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::9046",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::9444",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::9060",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::9470",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    },
+    "87956942": {
+      "username": "87956942",
+      "password": "AfY9VqoN3iPAqCdvNkbAB19XnwPW0803kpJywvVqrsg=",
+      "salt": "I3E1a9XKUJCWTKHUXHLvVQ==",
+      "method": "pbkdf2",
+      "props": {
+        "system_user": {
+          "Bool": true
+        }
+      },
+      "permissions": [
+        {
+          "resource": "mrn:metric::9288",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:metric::10664",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::290",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        },
+        {
+          "resource": "mrn:object::10665",
+          "action": [
+            "Read"
+          ],
+          "effect": "Allow",
+          "cascade": [],
+          "tag": null
+        }
+      ]
+    }
+  },
+  "agents": {
+    "$local": {
+      "info": {
+        "uuid": "$local",
+        "hostname": "Marcs-MBP.lan",
+        "interfaces": [
+          {
+            "name": "lo0",
+            "ip": "127.0.0.1",
+            "is_global": false,
+            "is_loopback": true,
+            "type": "ipv4"
+          },
+          {
+            "name": "lo0",
+            "ip": "::1",
+            "is_global": false,
+            "is_loopback": true,
+            "type": "ipv6"
+          },
+          {
+            "name": "en0",
+            "ip": "192.168.1.158",
+            "is_global": false,
+            "is_loopback": false,
+            "type": "ipv4"
+          }
+        ],
+        "platform": {
+          "arch": "x86_64",
+          "vendor": "apple",
+          "os": "macos",
+          "env": null
+        }
+      },
+      "status": "Authorized",
+      "last_ping": "2022-01-10T19:39:54.292287Z",
+      "max_execs": null,
+      "exec_timeout": null
+    }
+  }
+}

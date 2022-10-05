@@ -1,0 +1,14 @@
+{
+  "uuid": "9fe565f98066eb5f9d052ea5d3e2619e83505f7f",
+  "hash": "18d329f9a0ce5d10d7372a2308bbf3d75968c1f447061b083c20fbd33b3c3e42",
+  "mime_type": "",
+  "size": 2784,
+  "props": {
+    "height": {
+      "UInt": 225
+    },
+    "width": {
+      "UInt": 225
+    }
+  }
+}

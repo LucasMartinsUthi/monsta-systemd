@@ -1,0 +1,23 @@
+{
+  "uuid": "047561e5ea154eb6a3d950703b9087e2",
+  "hash": "2a32df885618dfcc97bc9856169df6970add9effe12bd26e4cd0e55c32b8face",
+  "mime_type": "image/svg+xml",
+  "size": 1055,
+  "props": {
+    "name": {
+      "String": "speaker.svg"
+    },
+    "height": {
+      "UInt": 150
+    },
+    "auth.user": {
+      "String": "ernani@honos.com.br"
+    },
+    "width": {
+      "UInt": 150
+    },
+    "auth.role": {
+      "String": "user"
+    }
+  }
+}

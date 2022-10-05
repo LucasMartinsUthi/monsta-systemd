@@ -1,0 +1,17 @@
+{
+  "uuid": "ee1f0c4caea7465fb59c708f1704ffd5",
+  "hash": "7c6a76a685ca40274d95e53f6967aca8a3b232b0cfd5ab26b4941c0704ead7de",
+  "mime_type": "audio/wav",
+  "size": 705644,
+  "props": {
+    "name": {
+      "String": "38702__elanhickler__archi-sonar-03.wav"
+    },
+    "auth.user": {
+      "String": "ernani@honos.com.br"
+    },
+    "auth.role": {
+      "String": "user"
+    }
+  }
+}

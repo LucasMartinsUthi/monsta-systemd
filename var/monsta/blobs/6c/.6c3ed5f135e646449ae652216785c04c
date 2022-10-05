@@ -1,0 +1,23 @@
+{
+  "uuid": "6c3ed5f135e646449ae652216785c04c",
+  "hash": "ead2170a942bf8a74c72303ac1824a4f345de572b6c5ce075af3a29f43b93f3f",
+  "mime_type": "image/svg+xml",
+  "size": 5590,
+  "props": {
+    "name": {
+      "String": "Sqlite-square-icon.svg"
+    },
+    "width": {
+      "UInt": 256
+    },
+    "height": {
+      "UInt": 256
+    },
+    "auth.role": {
+      "String": "user"
+    },
+    "auth.user": {
+      "String": "ernani@honos.com.br"
+    }
+  }
+}

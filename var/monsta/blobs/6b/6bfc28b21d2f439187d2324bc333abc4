@@ -1,0 +1,118 @@
+import cloud_alerts
+
+def get_cloud_status():
+    return registry.get("monsta.cloud.status")
+
+def get_telegram_chats(code):
+    return cloud_alerts.get_telegram_chats(code)
+
+def delete_telegram_chat(id):
+    return cloud_alerts.delete_telegram_chat(id)
+
+def get_alerts(page=1):
+    conn = cloud_alerts.get_connection()
+    offset = (page - 1) * 50
+    sql = f"""
+        select id, uuid, alert_type, recipient, subject, body, status, created_at, updated_at
+        from alerts order by created_at desc limit 50 offset {offset};
+    """
+    rows = conn.query(sql, [])
+    alerts = []
+    for row in rows:
+        alert = {
+            "id": row[0],
+            "uuid": row[1],
+            "alertType": row[2],
+            "recipient": row[3],
+            "subject": row[4],
+            "body": row[5],
+            "status": row[6],
+            "createdAt": row[7] + "Z",
+            "updatedAt": row[8] + "Z",
+            "deliverAt": time.gmtime().format_rfc3339() + "Z",
+        }
+        alerts.append(alert)
+
+    return alerts
+
+def send_alerts_to_cloud():
+    conn = cloud_alerts.get_connection()
+    sql = """
+        select id, uuid, alert_type, recipient, subject, body, status, created_at, updated_at
+        from alerts where status = ?;
+    """
+    rows = conn.query(sql, ["AlertPending"])
+    print("Sending events to cloud")
+    print(rows)
+
+    alert_ids = []
+    alerts = []
+    if len(rows) > 0:
+        for row in rows:
+            alert = {
+                "id": row[0],
+                "uuid": row[1],
+                "alertType": row[2],
+                "recipient": row[3],
+                "subject": row[4],
+                "body": row[5],
+                "status": row[6],
+                "createdAt": row[7] + "Z",
+                "updatedAt": row[8] + "Z",
+                "deliverAt": time.gmtime().format_rfc3339() + "Z",
+            }
+            alert_ids.append(str(row[0]))
+            alerts.append(alert)
+
+        payload = json.dumps(alerts)
+        print(payload)
+        key = config.get("monsta.cloud.key")
+        headers = {
+            "X-Monsta-Key": key,
+        }
+
+        print("Sending alerts")
+        resp = http.post("https://mind.monsta.com.br/alert", headers=headers, verify=False, data=payload)
+        print("Alert send done")
+        print(resp.status_code)
+        if resp.status_code == 200:
+            sql = "update alerts set status = 'AlertQueued' where id in (" + ",".join(alert_ids) + ");"
+            print(sql)
+            conn.execute(sql)
+            rpc.publish("cloud_alerts.status_update")
+
+registry.put("monsta.cloud_alerts.db.conn", None)
+cloud_alerts.get_connection()
+
+def update_alerts_status():
+    conn = cloud_alerts.get_connection()
+    sql = """
+        select uuid from alerts where status = ? limit 50;
+    """
+
+    rows = conn.query(sql, ["AlertQueued"])
+
+    uuids = []
+    for row in rows:
+        uuids.append(row[0])
+
+    if len(uuids) == 0:
+        return
+
+    payload = json.dumps(uuids)
+    key = config.get("monsta.cloud.key")
+    headers = {
+        "X-Monsta-Key": key,
+    }
+
+    print("Querying alerts")
+
+    resp = http.post("https://mind.monsta.com.br/alert/status2", headers=headers, verify=False, data=payload)
+    if resp.status_code != 200:
+        raise "Error querying alert statuses"
+
+    statuses = json.loads(resp.body.decode())
+    for uuid, status in statuses:
+        conn.execute("update alerts set status = ? where uuid = ?", [status, uuid])
+
+    rpc.publish("cloud_alerts.status_update")

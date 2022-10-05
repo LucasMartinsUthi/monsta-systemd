@@ -1,0 +1,101 @@
+def find_instance(instances, instance_id):
+    for instance in instances:
+        if instance["instanceId"] == instance_id:
+            return instance
+
+def find_monitor_instance(monitors, instance_id):
+    for monitor in monitors:
+        if "exec.instance" in monitor.ctx:
+            if monitor.ctx["exec.instance"]["id"] == instance_id:
+                return monitor
+
+def check_auto_monitors():
+    print("Checking auto monitors")
+    rows = core.query(f"select * from object where type = 'AutoMonitor'")
+
+    for auto_monitor in rows:
+        template = None
+        device = core.get_container(auto_monitor.props["device_id"])
+        monitors = core.query(f"select * from container where props.auto_monitor_id = {auto_monitor.id}")
+
+        print("Got device", device)
+
+        print(f"Checking auto monitor {auto_monitor.props}")
+
+        if "customized_template" in auto_monitor.props:
+            template = core.get_container(auto_monitor.props["customized_template"].id)
+        elif "template" in auto_monitor.props:
+            template = core.get_container(auto_monitor.props["template"].id)
+
+        if not template: continue
+
+        print(f"Got template {template.props}")
+
+        params = template.props.get("parameters")
+        print(f"Got params {params}")
+        if not params: continue
+
+        instance_enum = None
+        for param in params:
+            if param.name == "exec.instance":
+                instance_enum = param.option_source
+
+        print("Instance enum", instance_enum)
+
+        if not instance_enum: continue
+
+        # Criar novos monitores
+        instances = instance_enum.execute_on(device)
+        for instance in instances:
+            instance_id = instance["instanceId"]
+            name = instance["display"]
+            monitor = find_monitor_instance(monitors, instance_id)
+
+            if not monitor:
+                monitor = template.clone()
+                monitor.klass = "Monitor"
+                monitor.set_execution_target_inherit()
+                monitor.set_parent(device)
+                monitor.ctx["exec.instance"] = {"id": instance_id, "name": name}
+                monitor.props["auto_monitor_id"] = auto_monitor.id
+                monitor.save()
+
+        # Excluir monitores que não existam mais
+        for monitor in monitors:
+            instance_ctx = monitor.ctx["exec.instance"]
+            if not instance_ctx: continue
+            instance_id = instance_ctx["id"]
+            if not instance_id: continue
+            instance = find_instance(instances, instance_id)
+
+            marker_time = monitor.props.get("auto_monitor_delete_marker", None)
+            if not instance:
+                print("Monitor props", monitor.props)
+                if marker_time == None:
+                    print("Marking auto monitor for delete", monitor_ctx)
+                    monitor.props["auto_monitor_delete_marker"] = time.now()
+                    monitor.save()
+            else:
+                if marker_time != None:
+                    monitor.props["auto_monitor_delete_marker"] = None
+                    monitor.save()
+
+        now = time.now()
+        for monitor in monitors:
+            marker_time = monitor.props.get("auto_monitor_delete_marker", None)
+            if marker_time != None:
+                marker_period = now - marker_time
+                if marker_period > auto_monitor.props["retention_time_secs"]:
+                    print(f"Monitor marked for delete for {marker_period} seconds, deleting")
+                    monitor.delete()
+
+def get_auto_monitors_for_device(device_id):
+    return core.query(f"select * from object where type = 'AutoMonitor' and props.device_id = {str(device_id)}")
+
+def delete_auto_monitor(id):
+    monitors = core.query(f"select * from container where props.auto_monitor_id = {id}")
+    for monitor in monitors:
+        monitor.delete()
+
+    rows = core.query(f"select * from object where id = {id}")
+    rows[0].delete()

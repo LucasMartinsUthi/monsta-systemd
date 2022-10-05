@@ -1,0 +1,17 @@
+{
+  "uuid": "a3d45469e2c643f1a4001f379d49de86",
+  "hash": "e800549c902c5227dab433d87b2c71c5a630271616fa15b606dd89612de82320",
+  "mime_type": "image/png",
+  "size": 20453,
+  "props": {
+    "auth.user": {
+      "String": "ernani@honos.com.br"
+    },
+    "name": {
+      "String": "settings.png"
+    },
+    "auth.role": {
+      "String": "user"
+    }
+  }
+}

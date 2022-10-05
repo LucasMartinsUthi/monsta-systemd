@@ -1,0 +1,23 @@
+{
+  "uuid": "344d625eddf149d9afa79cbda13439f8",
+  "hash": "913fcfa1e48edea0d1525ee3e15c80895afd5aa78720feaa38ecefb5850471f0",
+  "mime_type": "image/svg+xml",
+  "size": 1540,
+  "props": {
+    "width": {
+      "UInt": 150
+    },
+    "height": {
+      "UInt": 150
+    },
+    "name": {
+      "String": "system2.svg"
+    },
+    "auth.role": {
+      "String": "user"
+    },
+    "auth.user": {
+      "String": "ernani@honos.com.br"
+    }
+  }
+}
