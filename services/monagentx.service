@@ -1,0 +1,15 @@
+[Unit]
+Description=monagentx
+After=network.target
+
+[Service]
+Type=simple
+Environment=LD_LIBRARY_PATH=/opt/monsta/lib
+Environment=LC_ALL=en_US.UTF-8
+Environment=JEMALLOC_SYS_WITH_MALLOC_CONF="background_thread:true,narenas:1,tcache:false,dirty_decay_ms:0,muzzy_decay_ms:0,abort_conf:true"
+Restart=always
+RestartSec=1
+ExecStart=/opt/monsta/bin/monagentx -f -c /opt/monsta/etc/monagentx.ini
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=monstadb
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/opt/monsta/bin/monstadb -config=/opt/monsta/etc/monstadb.ini
+
+[Install]
+WantedBy=multi-user.target
