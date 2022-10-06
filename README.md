@@ -17,6 +17,5 @@ docker build --rm -t local/c7-systemd-monsta -f .\dockerfiles\dev.Dockerfile .
 # Run
 
 ```
-docker run -ti --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-monsta
+docker run -ti --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 8888:80 local/c7-systemd-monsta
 ```
-
