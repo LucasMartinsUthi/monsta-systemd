@@ -1,9 +1,0 @@
-# Server script
-def get_backups():
-    key = config.get("monsta.cloud.key")
-    headers = {
-        "X-Monsta-Key": key,
-    }
-    resp = http.get("https://mind.monsta.com.br/backup/all/list", headers=headers, verify=False)
-    backups = json.loads(resp.body.decode())
-    return backups

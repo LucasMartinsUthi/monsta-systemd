@@ -1,4 +1,4 @@
-FROM local/c7-systemd
+FROM local/c8-systemd
 
 COPY ../opt/monsta /opt/monsta
 COPY ../var/monsta /var/monsta
